@@ -188,7 +188,7 @@ set smartcase
 
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-set tags=./tags;
+set tags=tags;/
 
 let g:fuf_splitPathMatching=1
 
@@ -204,4 +204,28 @@ function! OpenURL()
   endif
 endfunction
 map <Leader>w :call OpenURL()<CR>
+
+" Fix indenting for pasting, by using <F5>
+nnoremap <F5> :set invpaste paste?<Enter>
+imap <F5> <C-O><F5>
+set pastetoggle=<F5>
+
+" Facebook mods
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+syn match tab display "\t"
+hi link tab Error
+
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+" kill any trailing whitespace on save
+autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,ocaml,perl
+  \ autocmd BufWritePre <buffer>
+  \ :call <SID>StripTrailingWhitespaces()
 
