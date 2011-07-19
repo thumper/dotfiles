@@ -13,3 +13,13 @@ function railsapp {
 
 # misc
 alias reload='. ~/.bash_profile'
+
+# remote X-windows handling
+xdr() {
+    source ~/.x.display
+}
+
+xdw() {
+    echo 'export DISPLAY='$DISPLAY > ~/.x.display
+}
+
