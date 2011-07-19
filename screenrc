@@ -1,0 +1,23 @@
+
+bind U screen -t ugsc		ssh -X hork.ugcs.caltech.edu
+bind C screen -t cats		ssh -X thumper@unix.ic.ucsc.edu
+bind A screen -t alumni		ssh -X alumnus.caltech.edu
+bind S screen -t sundance	ssh -X soe.ucsc.edu
+bind N screen -t netlab		ssh -X netlab.cse.ucsc.edu
+bind L screen -t lauhau		ssh -X lauhau.cse.ucsc.edu
+
+autodetach on
+defscrollback 2048
+nethack on
+startup_message off
+defwrap on
+defmonitor on
+#zombie kr
+
+#term vt220
+
+# In order to be able to cut/paste mutt mail from screen,
+# you also need this
+defbce on
+term screen-bce
+
