@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# EMACS=true
+DIR=.
+if [[ -z "$EMACS" ]]; then
+  TAGS=$DIR/tags
+  FLAGS=""
+else
+  TAGS=$DIR/TAGS
+  FLAGS="-e"
+fi
+
+_ctags () {
+  ctags \
+    --exclude=.svn \
+    --exclude=.git \
+    --exclude='*.sql' \
+    --exclude=tmp \
+    --tag-relative=yes \
+    --php-kinds=-v \
+    --regex-PHP='/^ *(abstract +|final +)*class +([a-zA-Z0-9_]+)/\2/c/' \
+    --regex-PHP='/^ *(abstract +|final +)*class :([a-zA-Z0-9:_\\-]+)/\2/c/' \
+    --regex-PHP='/^ *(abstract +|final +)*class :([a-zA-Z0-9:_\\-]+)/:\2/c/' \
+    --regex-PHP='/^ *interface +([a-zA-Z0-9_]+)/\1/c/' \
+    --regex-PHP='/^ *(public +|static +|abstract +|protected +|private +)+function +&? *([a-zA-Z0-9_]+)/\2/f/' \
+    -R \
+    --links=no \
+    -f "$TAGS" \
+    $FLAGS \
+    "$TFB"
+}
+
+((((_ctags | cat) 3>&1 1>&2 2>&3 | egrep -v 'ignoring null tag') 3>&1 1>&2 2>&3) 2>&1)
