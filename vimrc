@@ -130,8 +130,8 @@ imap <Tab> <C-N>
 imap <C-L> <Space>=><Space>
 
 " Display extra whitespace: use ",s" to toggle back and forth
-set list listchars=trail:·
-nmap <silent> <leader>s :set nolist!<CR>   
+set listchars=tab:>-,trail:·
+nmap <silent> <leader>s :set nolist!<CR>
 
 " Local config
 if filereadable(".vimrc.local")
