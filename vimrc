@@ -92,26 +92,6 @@ set laststatus=2
 " \ is the leader character
 let mapleader = ","
 
-" Edit the README_FOR_APP (makes :R commands work)
-map <Leader>R :e doc/README_FOR_APP<CR>
-
-" Leader shortcuts for Rails commands
-map <Leader>m :Rmodel 
-map <Leader>c :Rcontroller 
-map <Leader>v :Rview 
-map <Leader>u :Runittest 
-map <Leader>f :Rfunctionaltest 
-map <Leader>tm :RTmodel 
-map <Leader>tc :RTcontroller 
-map <Leader>tv :RTview 
-map <Leader>tu :RTunittest 
-map <Leader>tf :RTfunctionaltest 
-map <Leader>sm :RSmodel 
-map <Leader>sc :RScontroller 
-map <Leader>sv :RSview 
-map <Leader>su :RSunittest 
-map <Leader>sf :RSfunctionaltest 
-
 " Hide search highlighting
 map <Leader>h :set invhls <CR>
 
@@ -149,12 +129,9 @@ imap <Tab> <C-N>
 
 imap <C-L> <Space>=><Space>
 
-" Display extra whitespace
-" set list listchars=tab:»·,trail:·
-
-" Edit routes
-command! Rroutes :e config/routes.rb
-command! Rschema :e db/schema.rb
+" Display extra whitespace: use ",s" to toggle back and forth
+set list listchars=trail:·
+nmap <silent> <leader>s :set nolist!<CR>   
 
 " Local config
 if filereadable(".vimrc.local")
@@ -230,4 +207,9 @@ endfun
 autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,ocaml,perl
   \ autocmd BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
+
+" Start scrolling 3 lines before the edge
+set scrolloff=3
+
+set visualbell
 
