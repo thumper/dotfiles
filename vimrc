@@ -41,7 +41,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.txt setfiletype text
 
   " Enable soft-wrapping for text files
-  autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
+  autocmd FileType tex,text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist spell spelllang=en_us
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
@@ -201,7 +201,7 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 
 " kill any trailing whitespace on save
-autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,ocaml,perl
+autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,tex,ocaml,perl
   \ autocmd BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
 
