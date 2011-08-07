@@ -38,7 +38,7 @@ def replace_file(file)
 end
 
 def link_file(file)
-  if file =~ /.erb$/
+  if file =~ /\.erb$/
     puts "generating ~/.#{file.sub('.erb', '')}"
     File.open(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"), 'w') do |new_file|
       new_file.write ERB.new(File.read(file)).result(binding)
