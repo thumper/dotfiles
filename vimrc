@@ -218,7 +218,7 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 
 " kill any trailing whitespace on save
-autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,tex,ocaml,perl
+autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,tex,ocaml,perl,java
   \ autocmd BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
 
