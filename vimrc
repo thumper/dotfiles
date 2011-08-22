@@ -100,6 +100,7 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>tn :tabnew<CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -182,10 +183,25 @@ function! OpenURL()
 endfunction
 map <Leader>w :call OpenURL()<CR>
 
-" Fix indenting for pasting, by using <F5>
-nnoremap <F5> :set invpaste paste?<Enter>
-imap <F5> <C-O><F5>
+"" Fix indenting for pasting, by using <F5>
+"nnoremap <F5> :set invpaste paste?<Enter>
+"imap <F5> <C-O><F5>
+"set pastetoggle=<F5>
+
+let paste_mode = 0              " 0 = normal, 1 = paste
+func! Paste_on_off()
+  if g:paste_mode == 0
+    set paste
+    let g:paste_mode = 1
+  else
+    set nopaste
+    let g:paste_mode = 0
+  endif
+  return
+endfunc
+nnoremap <silent> <F5> :call Paste_on_off()<CR>
 set pastetoggle=<F5>
+
 
 " Facebook mods
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -216,4 +232,6 @@ map W gq
 
 " Quick recording macro.  Record with "qq" and playback with "Q"
 nnoremap Q @q
+
+map <F12> :Gblame<CR>
 
