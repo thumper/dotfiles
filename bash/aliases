@@ -33,7 +33,7 @@ function r() {
       export SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK  
     fi
     NEW_DISPLAY=`tmux showenv|grep ^DISPLAY|cut -d = -f 2`
-    if [[ -n $NEW_DISPLAY ]] && [[ -S $NEW_DISPLAY ]]; then 
+    if [[ -n $NEW_DISPLAY ]]; then 
       export DISPLAY=$NEW_DISPLAY  
     fi
   fi
