@@ -27,7 +27,7 @@ _ctags () {
     --links=no \
     -f "$TAGS" \
     $FLAGS \
-    "$TFB"
+    "."
 }
 
 ((((_ctags | cat) 3>&1 1>&2 2>&3 | egrep -v 'ignoring null tag') 3>&1 1>&2 2>&3) 2>&1)
