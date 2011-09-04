@@ -1,0 +1,9 @@
+
+__ssh ()
+{
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  COMPREPLY=($(compgen -W "$(grep 'Host ' ${HOME}/.ssh/config | cut -f 2 -d ' ' | grep -v '*')" -- "$cur"))
+}
+
+complete -o default -o nospace -F __ssh ssh
+
