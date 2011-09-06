@@ -6,6 +6,9 @@ set nocompatible
 
 call pathogen#infect()
 
+" , is the leader character
+let mapleader = ","
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -16,16 +19,15 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" This is an alternative that also works in block mode, but the deleted
-" text is lost and it only works for putting the current register.
-"vnoremap p "_dp
-
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running"))
   syntax on
   set hlsearch
+
   nnoremap <silent> <space> :noh<return>
+  " Hide search highlighting
+  map <Leader>h :set invhls <CR>
 endif
 
 " Switch wrap off for everything
@@ -88,12 +90,6 @@ set smarttab
 
 " Always display the status line
 set laststatus=2
-
-" \ is the leader character
-let mapleader = ","
-
-" Hide search highlighting
-map <Leader>h :set invhls <CR>
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
