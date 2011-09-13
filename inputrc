@@ -1,0 +1,4 @@
+# http://news.ycombinator.com/item?id=2983079
+$if Bash
+  Space: magic-space
+$endif
