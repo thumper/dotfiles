@@ -6,5 +6,8 @@ function parse_git_branch {
     echo "("${ref#refs/heads/}")"
 }
 
+# Put the git branch into the prompt
 PS1="\h: \w \$(parse_git_branch)\\$ "
 
+# http://www.catonmat.net/blog/bash-vi-editing-mode-cheat-sheet/
+set -o vi
