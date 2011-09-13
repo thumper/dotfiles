@@ -16,7 +16,7 @@ class ProjectCompletion
   end
   
   def projects
-    `ls ~/fbcode/`.split
+    `ls ~/research/`.split
   end
 end
 

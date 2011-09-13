@@ -6,4 +6,5 @@ __ssh ()
 }
 
 complete -o default -o nospace -F __ssh ssh
+complete -o default -o nospace -F __ssh scp
 
