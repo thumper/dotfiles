@@ -3,6 +3,17 @@
 # changing directory to code project
 function c { cd ~/research/$1; }
 
+# http://news.ycombinator.com/item?id=2983079
+function up() {
+  if test $# = 1 ; then
+    s=$( printf "%$1s" );
+    s=${s// /..\/};
+    cd $s ;
+  else
+    cd .. ;
+  fi;
+}
+
 # alternative to "rails" command to use templates
 function railsapp {
   template=$1
