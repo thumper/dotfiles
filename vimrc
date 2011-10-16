@@ -250,6 +250,7 @@ map W gq
 nnoremap Q @q
 
 map <F12> :Gblame<CR>
+map <F11> :Gstatus<CR>
 map <F10> :NERDTreeToggle<CR>
 imap <F10> <Esc>:NERDTreeToggle<CR>
 
