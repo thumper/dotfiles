@@ -1,5 +1,5 @@
 " set guioptions-=T " hide toolbar
-set lines=50 columns=100
+set lines=40 columns=100
 
 "colorscheme pablo
 
