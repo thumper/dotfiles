@@ -19,6 +19,13 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
+set showmode
+set cursorline
+set ttyfast
+"set relativenumber
+"set undofile
+
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running"))
@@ -100,6 +107,16 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>tn :tabnew<CR>
 
+" Open a new vertical split
+nnoremap <Leader>w <C-w>v<C-w>l
+
+" Navigate splits by using ctrl-<direction>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
@@ -121,10 +138,8 @@ nmap <F1> <Esc>
 " Press ^F from insert mode to insert the current file name
 imap <C-F> <C-R>=expand("%")<CR>
 
-" Maps autocomplete to tab
+" Maps autocomplete to tab; doesn't seem to work?
 imap <Tab> <C-N>
-
-imap <C-L> <Space>=><Space>
 
 " Display extra whitespace: use ",s" to toggle back and forth
 set listchars=tab:>-,trail:·
@@ -141,9 +156,10 @@ if executable("ack")
 endif
 
 " Color scheme
-" colorscheme vividchalk
-" highlight NonText guibg=#060606
-" highlight Folded  guibg=#0A0A0A guifg=#9090D0
+"colorscheme vividchalk
+"highlight NonText guibg=#060606
+"highlight Folded  guibg=#0A0A0A guifg=#9090D0
+colorscheme molokai
 
 " Numbers
 set nonumber
@@ -179,13 +195,14 @@ function! OpenURL()
 	  echo "No URI found in line."
   endif
 endfunction
-map <Leader>w :call OpenURL()<CR>
+map <Leader>u :call OpenURL()<CR>
 
 "" Fix indenting for pasting, by using <F5>
 "nnoremap <F5> :set invpaste paste?<Enter>
 "imap <F5> <C-O><F5>
 "set pastetoggle=<F5>
 
+"" Instead, use a variable to explicitly track the paste mode
 let paste_mode = 0              " 0 = normal, 1 = paste
 func! Paste_on_off()
   if g:paste_mode == 0
@@ -201,10 +218,11 @@ nnoremap <silent> <F5> :call Paste_on_off()<CR>
 set pastetoggle=<F5>
 
 
-" Facebook mods
+" Highlight any text beyond 80cols
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
+" Highlight tabs, so that we don't put any into source code
 syn match tab display "\t"
 hi link tab Error
 
