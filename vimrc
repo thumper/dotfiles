@@ -218,14 +218,6 @@ nnoremap <silent> <F5> :call Paste_on_off()<CR>
 set pastetoggle=<F5>
 
 
-" Highlight any text beyond 80cols
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
-" Highlight tabs, so that we don't put any into source code
-syn match tab display "\t"
-hi link tab Error
-
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
@@ -237,6 +229,9 @@ endfun
 autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,tex,ocaml,perl,java
   \ autocmd BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
+
+" we use 4 space indents for python
+autocmd FileType python setlocal shiftwidth=4
 
 " Start scrolling 3 lines before the edge
 set scrolloff=3
@@ -255,10 +250,19 @@ map <F10> :NERDTreeToggle<CR>
 imap <F10> <Esc>:NERDTreeToggle<CR>
 
 " Settings for Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+""set statusline+=%#warningmsg#
+""set statusline+=%{SyntasticStatuslineFlag()}
+""set statusline+=%*
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_jump=0
+let g:syntastic_auto_loc_list=0
+
+" Highlight any text beyond 80cols
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+" Highlight tabs, so that we don't put any into source code
+syn match tab display "\t"
+hi link tab Error
+
 
