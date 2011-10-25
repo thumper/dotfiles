@@ -225,8 +225,11 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
+au BufRead,BufNewFile *.thrift set filetype=thrift
+au! Syntax thrift source ~/.vim/thrift.vim
+
 " kill any trailing whitespace on save
-autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,tex,ocaml,perl,java
+autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,tex,ocaml,perl,java,thrift
   \ autocmd BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
 
@@ -264,5 +267,4 @@ match OverLength /\%81v.\+/
 " Highlight tabs, so that we don't put any into source code
 syn match tab display "\t"
 hi link tab Error
-
 
