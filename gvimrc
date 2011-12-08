@@ -1,7 +1,7 @@
 " set guioptions-=T " hide toolbar
 set lines=40 columns=100
 
-colorscheme getafe
+"colorscheme getafe
 
-set guifont=Menlo:h18
+"set guifont=Menlo:h18
 
