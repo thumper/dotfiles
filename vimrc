@@ -235,6 +235,8 @@ autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,tex,ocaml
 
 " we use 4 space indents for python
 autocmd FileType python setlocal shiftwidth=4
+" make the php syntax coloring more visible
+autocmd FileType php colorscheme elflord
 
 " Start scrolling 3 lines before the edge
 set scrolloff=3
