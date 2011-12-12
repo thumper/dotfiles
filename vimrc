@@ -3,21 +3,19 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+set encoding=utf-8
+set showcmd             " display incomplete commands
 
 call pathogen#infect()
 
 " , is the leader character
 let mapleader = ","
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
 set nobackup
 set nowritebackup
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
 
 set showmode
 set cursorline
@@ -36,9 +34,6 @@ if (&t_Co > 2 || has("gui_running"))
   " Hide search highlighting
   map <Leader>h :set invhls <CR>
 endif
-
-" Switch wrap off for everything
-set nowrap
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -89,11 +84,20 @@ endif " has("autocmd")
   " set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
 " endif
 
-" Softtabs, 2 spaces
-set tabstop=8
-set shiftwidth=2
-set expandtab
+"" Whitespace
+" Switch wrap off for everything
+set nowrap                      " don't wrap lines
+set tabstop=8                   " keepin' it real
+set shiftwidth=2                " indentation is two spaces
+set expandtab                   " use spaces, not tabs
 set smarttab
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" case only matters with mixed case expressions
+set incsearch		" do incremental searching
+set ignorecase          " case insensitive searching...
+set smartcase           " ... unless there is at least one capital letter
 
 " Always display the status line
 set laststatus=2
@@ -173,10 +177,6 @@ let g:snippetsEmu_key = "<S-Tab>"
 set completeopt=longest,menu
 set wildmode=list:longest,list:full
 set complete=.,t
-
-" case only matters with mixed case expressions
-set ignorecase
-set smartcase
 
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
