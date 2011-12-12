@@ -93,6 +93,10 @@ set expandtab                   " use spaces, not tabs
 set smarttab
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+" Display extra whitespace: use ",s" to toggle back and forth
+set listchars=tab:>-,trail:·
+nmap <silent> <leader>s :set nolist!<CR>
+
 
 " case only matters with mixed case expressions
 set incsearch		" do incremental searching
@@ -144,10 +148,6 @@ imap <C-F> <C-R>=expand("%")<CR>
 
 " Maps autocomplete to tab; doesn't seem to work?
 imap <Tab> <C-N>
-
-" Display extra whitespace: use ",s" to toggle back and forth
-set listchars=tab:>-,trail:·
-nmap <silent> <leader>s :set nolist!<CR>
 
 " Local config
 if filereadable(".vimrc.local")
@@ -269,4 +269,10 @@ match OverLength /\%81v.\+/
 " Highlight tabs, so that we don't put any into source code
 syn match tab display "\t"
 hi link tab Error
+
+"" mappings for Command-T
+" use double percent sign in command mode to expand to curdir
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 
