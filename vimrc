@@ -58,6 +58,7 @@ if (&t_Co > 2 || has("gui_running"))
   syntax on
   set hlsearch
 
+  " use spacebar to turn off highlighting
   nnoremap <silent> <space> :noh<return>
   " Hide search highlighting
   map <Leader>h :set invhls <CR>
@@ -71,31 +72,45 @@ if has("autocmd")
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 
-  " Set File type to 'text' for files ending in .txt
-  autocmd BufNewFile,BufRead *.txt setfiletype text
+  augroup filetypes
+    au!
+    autocmd BufNewFile,BufRead *.txt setfiletype text
+    autocmd BufRead,BufNewFile *.thrift setfiletype thrift
 
-  " Enable soft-wrapping for text files
-  autocmd FileType tex,text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist spell spelllang=en_us
+    " Enable soft-wrapping for text files
+    autocmd FileType tex,text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist spell spelllang=en_us
+    " For all text files set 'textwidth' to 72 characters.
+    autocmd FileType text setlocal textwidth=72
+    autocmd FileType tex setlocal textwidth=72
+    autocmd FileType python setlocal shiftwidth=4
+    autocmd FileType php colorscheme elflord
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
 
-  " For all text files set 'textwidth' to 72 characters.
-  autocmd FileType text setlocal textwidth=72
-  autocmd FileType tex setlocal textwidth=72
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+    " Automatically load .vimrc source when saved
+    autocmd BufWritePost .vimrc source $MYVIMRC
+  augroup END
 
-  " Automatically load .vimrc source when saved
-  autocmd BufWritePost .vimrc source $MYVIMRC
+  fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+  endfun
 
+
+  augroup whitespace
+    " kill any trailing whitespace on save
+    autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,tex,ocaml,perl,java,thrift
+      \ autocmd BufWritePre <buffer>
+      \ :call <SID>StripTrailingWhitespaces()
   augroup END
 
 else
@@ -165,8 +180,6 @@ vmap D y'>p
 " overwriting the default register
 vmap P p :call setreg('"', getreg('0')) <CR>
 
-" For Haml
-au! BufRead,BufNewFile *.haml         setfiletype haml
 
 " No Help, please
 nmap <F1> <Esc>
@@ -213,7 +226,7 @@ set tags=tags;/
 let g:fuf_splitPathMatching=1
 
 " Open URL
-command -bar -nargs=1 OpenURL :!open <args>
+command! -bar -nargs=1 OpenURL :!open <args>
 function! OpenURL()
   let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
   echo s:uri
@@ -245,26 +258,6 @@ endfunc
 nnoremap <silent> <F5> :call Paste_on_off()<CR>
 set pastetoggle=<F5>
 
-
-fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
-
-au BufRead,BufNewFile *.thrift set filetype=thrift
-au! Syntax thrift source ~/.vim/thrift.vim
-
-" kill any trailing whitespace on save
-autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,tex,ocaml,perl,java,thrift
-  \ autocmd BufWritePre <buffer>
-  \ :call <SID>StripTrailingWhitespaces()
-
-" we use 4 space indents for python
-autocmd FileType python setlocal shiftwidth=4
-" make the php syntax coloring more visible
-autocmd FileType php colorscheme elflord
 
 " Start scrolling 3 lines before the edge
 set scrolloff=3
