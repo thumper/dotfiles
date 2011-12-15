@@ -83,7 +83,6 @@ if has("autocmd")
     autocmd FileType text setlocal textwidth=72
     autocmd FileType tex setlocal textwidth=72
     autocmd FileType python setlocal shiftwidth=4
-    autocmd FileType php colorscheme elflord
 
 
     " When editing a file, always jump to the last known cursor position.
@@ -297,3 +296,4 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 
+set t_Co=256
