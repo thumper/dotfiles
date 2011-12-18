@@ -76,6 +76,7 @@ if has("autocmd")
     au!
     autocmd BufNewFile,BufRead *.txt setfiletype text
     autocmd BufRead,BufNewFile *.thrift setfiletype thrift
+    autocmd BufRead,BufNewFile *.bcf setfiletype perl
 
     " Enable soft-wrapping for text files
     autocmd FileType tex,text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist spell spelllang=en_us
@@ -185,9 +186,6 @@ nmap <F1> <Esc>
 
 " Press ^F from insert mode to insert the current file name
 imap <C-F> <C-R>=expand("%")<CR>
-
-" Maps autocomplete to tab; doesn't seem to work?
-imap <Tab> <C-N>
 
 " Local config
 if filereadable(".vimrc.local")
