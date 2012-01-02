@@ -1,3 +1,6 @@
+if [ "$TERM" = "xterm" ]; then
+  export TERM=xterm-256color
+fi
 source ~/.bash/aliases
 source ~/.bash/completions
 source ~/.bash/paths
