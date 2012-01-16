@@ -11,3 +11,15 @@ PS1="\h: \w \$(parse_git_branch)\\$ "
 
 # http://www.catonmat.net/blog/bash-vi-editing-mode-cheat-sheet/
 set -o vi
+
+# Fix terminal setting to allow more color
+if [ "$TERM" = "xterm" ]; then
+  export TERM=xterm-256color
+fi
+
+# Fix the SSH authentication
+my_ssh_auth_sock="$SSH_AUTH_SOCK"
+if [ "$my_ssh_auth_sock" != "/tmp/ssh-agent-$USER-screen" ]; then
+  rm -f "/tmp/ssh-agent-$USER-screen"
+  ln -sf "$my_ssh_auth_sock" "/tmp/ssh-agent-$USER-screen"
+fi

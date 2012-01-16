@@ -1,3 +1,4 @@
+setenv SSH_AUTH_SOCK /tmp/ssh-agent-$USER-screen
 
 bind U screen -t ugsc		ssh -X hork.ugcs.caltech.edu
 bind C screen -t cats		ssh -X thumper@unix.ic.ucsc.edu
