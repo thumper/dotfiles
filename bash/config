@@ -16,6 +16,9 @@ set -o vi
 if [ "$TERM" = "xterm" ]; then
   export TERM=xterm-256color
 fi
+if [ "$TERM" = "screen" ]; then
+  export TERM=screen-256color
+fi
 
 # Fix the SSH authentication
 my_ssh_auth_sock="$SSH_AUTH_SOCK"

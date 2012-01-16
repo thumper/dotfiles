@@ -17,8 +17,7 @@ defmonitor on
 
 #term vt220
 
-# In order to be able to cut/paste mutt mail from screen,
-# you also need this
-defbce on
-term screen-bce
-
+## In order to be able to cut/paste mutt mail from screen,
+## you also need this
+#defbce on
+#term screen-bce
