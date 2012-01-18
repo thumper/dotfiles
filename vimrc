@@ -84,6 +84,7 @@ if has("autocmd")
     autocmd FileType text setlocal textwidth=72
     autocmd FileType tex setlocal textwidth=72
     autocmd FileType python setlocal shiftwidth=4
+    autocmd FileType java setlocal shiftwidth=4
 
 
     " When editing a file, always jump to the last known cursor position.
