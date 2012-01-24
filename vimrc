@@ -51,6 +51,9 @@ set ttyfast
 "set relativenumber
 "set undofile
 
+" Don't load the pi_paren plugin to do brace matching
+" http://vimdoc.sourceforge.net/htmldoc/pi_paren.html
+let loaded_matchparen = 1
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
