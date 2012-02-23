@@ -1,0 +1,2 @@
+--type-add=ruby=.rake
+--type-set=thrift=.thrift
