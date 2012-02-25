@@ -2,3 +2,5 @@
 $if Bash
   Space: magic-space
 $endif
+set bind-tty-special-chars off
+C-w: unix-filename-rubout
