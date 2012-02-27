@@ -165,6 +165,7 @@ map <Leader>tn :tabnew<CR>
 " Open a new vertical split
 nnoremap <Leader>w <C-w>v<C-w>l
 
+" Easy split navigation
 " Navigate splits by using ctrl-<direction>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -270,6 +271,15 @@ map W gq
 
 " Quick recording macro.  Record with "qq" and playback with "Q"
 nnoremap Q @q
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" Use sane regexes
+nnoremap / /\v
+vnoremap / /\v
+
 
 map <F12> :Gblame<CR>
 map <F11> :Gstatus<CR>
