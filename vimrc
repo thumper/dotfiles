@@ -193,8 +193,8 @@ nmap <F1> <Esc>
 imap <C-F> <C-R>=expand("%")<CR>
 
 " Local config
-if filereadable(".vimrc.local")
-  source .vimrc.local
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
 endif
 
 " Use Ack instead of Grep when available
