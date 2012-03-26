@@ -84,6 +84,7 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.txt setfiletype text
     autocmd BufRead,BufNewFile *.thrift setfiletype thrift
     autocmd BufRead,BufNewFile *.bcf setfiletype perl
+    autocmd BufRead,BufNewFile *.phpt setfiletype php
 
     " Enable soft-wrapping for text files
     autocmd FileType tex,text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist spell spelllang=en_us
