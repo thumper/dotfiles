@@ -327,3 +327,6 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_files = 0
+" Ignore pyc files
+set wildignore+=*.pyc
+
