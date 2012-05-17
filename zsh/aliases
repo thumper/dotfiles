@@ -1,5 +1,11 @@
 # cd
 alias ..='cd ..'
+alias d='dirs'
+alias 1='pushd +1'
+alias 2='pushd +2'
+alias 3='pushd +3'
+alias 4='pushd +4'
+alias 5='pushd +5'
 
 # ls
 alias ls="ls -F"
