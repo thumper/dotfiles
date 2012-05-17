@@ -318,3 +318,12 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 "set t_AB=^[[48;5;%dm
 "set t_AF=^[[38;5;%dm
 
+" Settings for CtrlP
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+  \ }
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_max_files = 0
