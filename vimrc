@@ -1,5 +1,11 @@
 " based on http://github.com/jferris/config_files/blob/master/vimrc
 
+"" REQUIREMENTS:
+"" * must have 'vim' installed: apt-get install vim
+"" * must install Vundle code:
+""     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+""     vim +BundleInstall +qall
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
