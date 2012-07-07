@@ -13,8 +13,9 @@ main = xmonad myConfig
 myConfig = gnomeConfig {
 --     terminal            = config_terminal,
     focusFollowsMouse   = config_focusFollowsMouse
-    -- use the Command key in OSX, instead of Alt/Option.
-    -- modMask = mod4Mask
+    -- use the Command key in OSX, instead of Alt/Option,
+    -- and uses the Win key in Linux.
+    -- old code: modMask = mod4Mask
 
 }
 
