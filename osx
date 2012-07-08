@@ -88,3 +88,5 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 # Kill affected applications
 for app in Safari Finder Dock Mail; do killall "$app"; done
 
+# Enable subpixel font rendering on non-Apple LCDs
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
