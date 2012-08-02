@@ -32,6 +32,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'msanders/snipmate.vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'phleet/vim-arcanist'
 
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
@@ -293,7 +294,7 @@ vnoremap / /\v
 
 
 map <F12> :Gblame<CR>
-map <F11> :Gstatus<CR>
+map <F11> :ArcInline<CR>
 map <F10> :NERDTreeToggle<CR>
 imap <F10> <Esc>:NERDTreeToggle<CR>
 
