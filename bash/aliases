@@ -61,3 +61,8 @@ function r() {
     export SSH_AUTH_SOCK=/tmp/ssh-agent-$USER-screen
   fi
 }
+
+# delete merged branches
+function kill_merged() {
+   git branch --merged $1 | grep -v 'master$' | xargs git branch -d
+}
