@@ -10,7 +10,8 @@ function parse_git_branch {
 PS1="\h: \w \$(parse_git_branch)\\$ "
 
 # http://www.catonmat.net/blog/bash-vi-editing-mode-cheat-sheet/
-set -o vi
+#set -o vi
+set -o emacs
 
 # Fix terminal setting to allow more color
 if [ "$TERM" = "xterm" ]; then
