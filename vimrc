@@ -33,6 +33,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'msanders/snipmate.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'phleet/vim-arcanist'
+Bundle 'benmills/vimux'
 
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
@@ -337,3 +338,6 @@ let g:ctrlp_max_files = 0
 " Ignore pyc files
 set wildignore+=*.pyc
 
+
+""" Vimux bindings
+map <Leader>r :call RunVimTmuxCommand(getline('.'))<CR>
