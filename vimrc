@@ -33,6 +33,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'msanders/snipmate.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'phleet/vim-arcanist'
+Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'benmills/vimux'
 
 " non github repos
@@ -93,6 +94,8 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.thrift setfiletype thrift
     autocmd BufRead,BufNewFile *.bcf setfiletype perl
     autocmd BufRead,BufNewFile *.phpt setfiletype php
+    autocmd BufRead,BufNewFile *.tw setfiletype python
+    autocmd BufRead,BufNewFile *.cconf set filetype=python
 
     " Enable soft-wrapping for text files
     autocmd FileType tex,text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist spell spelllang=en_us
@@ -338,6 +341,7 @@ let g:ctrlp_max_files = 0
 " Ignore pyc files
 set wildignore+=*.pyc
 
+let g:syntastic_python_checker = 'flake8'
 
 """ Vimux bindings
 map <Leader>r :call RunVimTmuxCommand(getline('.'))<CR>
