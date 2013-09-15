@@ -39,26 +39,13 @@ xdw() {
 # http://justinchouinard.com/blog/2010/04/10/fix-stale-ssh-environment-variables-in-gnu-screen-and-tmux/                                                                                                                                                                                         
 function rt() {   
   # Refresh to the true value for the SSH auth socket
-  if [[ -n $TMUX ]]; then
-    NEW_SSH_AUTH_SOCK=`tmux showenv|grep ^SSH_AUTH_SOCK|cut -d = -f 2`
-    if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then 
-      export SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK  
-    fi
-    NEW_DISPLAY=`tmux showenv|grep ^DISPLAY|cut -d = -f 2`
-    if [[ -n $NEW_DISPLAY ]]; then 
-      export DISPLAY=$NEW_DISPLAY  
-    fi
-  fi
+  eval `keychain --eval --inherit any --noask --nolock`
 }
 
 function r() {   
-  # Refresh SSH vars to just point to the symlink
-  if [[ -n $TMUX ]]; then
-    NEW_DISPLAY=`tmux showenv|grep ^DISPLAY|cut -d = -f 2`
-    if [[ -n $NEW_DISPLAY ]]; then 
-      export DISPLAY=$NEW_DISPLAY  
-    fi
-    export SSH_AUTH_SOCK=/tmp/ssh-agent-$USER-screen
+  # refresh the SSH agent
+  if [ -d ~/.keychain ]; then
+    . ~/.keychain/$(hostname)-sh
   fi
 }
 
