@@ -39,13 +39,23 @@ xdw() {
 # http://justinchouinard.com/blog/2010/04/10/fix-stale-ssh-environment-variables-in-gnu-screen-and-tmux/                                                                                                                                                                                         
 function rt() {   
   # Refresh to the true value for the SSH auth socket
+  rm -f "/tmp/ssh-auth-sock.$USER"
   eval `keychain --eval --inherit any --noask --nolock`
+  echo "Setting SSH_AUTH=$SSH_AUTH_SOCK"
+  if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "/tmp/ssh-auth-sock.$USER" ] ; then
+    ln -sf $SSH_AUTH_SOCK "/tmp/ssh-auth-sock.$USER"
+  fi
+  export SSH_AUTH_SOCK="/tmp/ssh-auth-sock.$USER"
 }
 
 function r() {   
   # refresh the SSH agent
   if [ -d ~/.keychain ]; then
     . ~/.keychain/$(hostname)-sh
+    if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "/tmp/ssh-auth-sock.$USER" ] ; then
+      ln -sf $SSH_AUTH_SOCK "/tmp/ssh-auth-sock.$USER"
+    fi
+    export SSH_AUTH_SOCK="/tmp/ssh-auth-sock.$USER"
   fi
 }
 

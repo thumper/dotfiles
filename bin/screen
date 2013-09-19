@@ -1,4 +1,4 @@
 #!/bin/sh
-ln -sf "$SSH_AUTH_SOCK" "$HOME/.screen/ssh-auth-sock.$HOSTNAME"
+ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-auth-sock.$USER"
 echo 'export DISPLAY='$DISPLAY > ~/.x.display
 /usr/bin/screen $@
