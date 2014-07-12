@@ -15,32 +15,34 @@ set nocompatible
 filetype on                    " required for osx vim
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
 "
 " original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'msanders/snipmate.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'phleet/vim-arcanist'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'benmills/vimux'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'msanders/snipmate.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'phleet/vim-arcanist'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'benmills/vimux'
 
 " non github repos
-Bundle 'git://git.wincent.com/command-t.git'
+Plugin 'git://git.wincent.com/command-t.git'
 " ...
 
 
+" All of your Plugins must be added before the following line
+ call vundle#end()            " required
 filetype plugin indent on     " required! 
 """ Vundle section done
 
