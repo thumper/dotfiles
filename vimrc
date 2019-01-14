@@ -21,7 +21,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " My Bundles here:
 "
@@ -42,7 +42,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 
 
 " All of your Plugins must be added before the following line
- call vundle#end()            " required
+call vundle#end()            " required
 filetype plugin indent on     " required! 
 """ Vundle section done
 
