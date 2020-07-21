@@ -29,12 +29,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'msanders/snipmate.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'phleet/vim-arcanist'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'benmills/vimux'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'w0rp/ale'
 
 " non github repos
 Plugin 'git://git.wincent.com/command-t.git'
@@ -311,6 +313,11 @@ imap <F10> <Esc>:NERDTreeToggle<CR>
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=0
 let g:syntastic_auto_loc_list=0
+" Settings for ALE
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+
 
 " Highlight any text beyond 80cols
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
